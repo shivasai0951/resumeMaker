@@ -4,8 +4,8 @@ class AppConfig {
   static const String appName = 'Resume Maker';
   static const String appVersion = '1.0.0';
 
-  static const Color primaryColor = Color(0xFF6200EE);
-  static const Color primaryVariant = Color(0xFF3700B3);
+  static const Color primaryColor = Color(0xFF2F80ED);
+  static const Color primaryVariant = Color(0xFF56CCF2);
   static const Color secondaryColor = Color(0xFF03DAC6);
   static const Color secondaryVariant = Color(0xFF018786);
   static const Color backgroundColor = Color(0xFFFFFFFF);
@@ -92,7 +92,7 @@ class AppConfig {
         backgroundColor: primaryColor,
         foregroundColor: Colors.white,
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         elevation: 2,
         color: surfaceColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -176,7 +176,7 @@ class AppConfig {
         backgroundColor: darkPrimaryColor,
         foregroundColor: darkBackgroundColor,
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         elevation: 2,
         color: darkSurfaceColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

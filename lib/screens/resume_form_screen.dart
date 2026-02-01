@@ -186,29 +186,29 @@ class _ResumeFormScreenState extends State<ResumeFormScreen> {
               decoration: InputDecoration(
                 labelText: localizations.translate('description'),
                 prefixIcon: const Icon(Icons.description),
-                helperText: 'Max 100 characters',
+                helperText: 'Max 300 characters',
               ),
-              maxLines: 4,
-              maxLength: 100,
+              maxLines: 5,
+              maxLength: 300,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return localizations.translate('fill_required_fields');
                 }
-                if (value.length > 100) {
+                if (value.length > 300) {
                   return localizations.translate('description_limit');
                 }
                 return null;
               },
             ),
             const SizedBox(height: 16),
-            TextFormField(
+          /*  TextFormField(
               controller: _attachmentController,
               decoration: InputDecoration(
                 labelText: localizations.translate('attachment'),
                 prefixIcon: const Icon(Icons.attach_file),
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 16),*/
             CheckboxListTile(
               title: Text(localizations.translate('fresher')),
               value: _isFresher,
@@ -813,7 +813,21 @@ class _ResumeFormScreenState extends State<ResumeFormScreen> {
           selectedColor: selectedColor,
         );
 
-        if (mounted) {
+        if (filePath == null) {
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text("Storage permission denied")),
+            );
+          }
+        } else {
+          if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("PDF saved in Downloads")),
+          );
+          }
+        }
+
+       /* if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
@@ -821,7 +835,7 @@ class _ResumeFormScreenState extends State<ResumeFormScreen> {
               ),
             ),
           );
-        }
+        }*/
       } catch (e) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(

@@ -15,28 +15,15 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context);
 
-    return Scaffold(
+    /*return Scaffold(
       appBar: AppBar(title: Text(localizations.translate('dashboard'))),
       drawer: Drawer(
         child: Column(
           children: [
             DrawerHeader(
-              decoration: const BoxDecoration(color: AppConfig.primaryColor),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.description, size: 60, color: Colors.white),
-                  const SizedBox(height: 10),
-                  Text(
-                    AppConfig.appName,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
+              //decoration: const BoxDecoration(color: AppConfig.primaryColor),
+              child: 
+              Image.asset("assets/ic_launcher.png",fit: BoxFit.fitWidth ,),
             ),
             ListTile(
               leading: const Icon(Icons.dashboard),
@@ -68,30 +55,125 @@ class DashboardScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),*/
+   return Scaffold(
+     appBar: AppBar(
+       elevation: 0,
+       centerTitle: true,
+       title: Text(
+         localizations.translate('dashboard'),
+         style: Theme.of(context).textTheme.titleMedium,
+       ),
+       shape: const RoundedRectangleBorder(
+         borderRadius: BorderRadius.vertical(
+           bottom: Radius.circular(16),
+         ),
+       ),
+     ),
+
+     drawer: Drawer(
+       child: Column(
+         children: [
+           Container(height: 50, color: Theme.of(context).colorScheme.primary,),
+           // 🔹 Modern Header
+           Container(
+
+             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+             decoration: BoxDecoration(
+               color: Theme.of(context).colorScheme.primary,
+               borderRadius: const BorderRadius.only(
+                 bottomLeft: Radius.circular(24),
+                 bottomRight: Radius.circular(24),
+
+
+               ),
+             ),
+             child: Row(
+               children: [
+                 CircleAvatar(
+                   radius: 28,
+                   backgroundColor: Colors.white,
+                   child: Padding(
+                     padding: const EdgeInsets.all(6),
+                     child: Image.asset(
+                       "assets/ic_launcher.png",
+                       fit: BoxFit.contain,
+                     ),
+                   ),
+                 ),
+                 const SizedBox(width: 12),
+                 Column(
+                   crossAxisAlignment: CrossAxisAlignment.start,
+                   children: [
+                     Text(
+                       "${AppConfig.appName}",
+                       style: Theme.of(context)
+                           .textTheme
+                           .titleMedium
+                           ?.copyWith(color: Colors.white),
+                     ),
+                     const SizedBox(height: 4),
+                     Text(
+                       "Version - ${AppConfig.appVersion}",
+                       style: Theme.of(context)
+                           .textTheme
+                           .bodySmall
+                           ?.copyWith(color: Colors.white70),
+                     ),
+                   ],
+                 )
+               ],
+             ),
+           ),
+
+           const SizedBox(height: 16),
+
+           // 🔹 Menu Items
+           _DrawerItem(
+             icon: Icons.dashboard_rounded,
+             title: localizations.translate('dashboard'),
+             onTap: () {
+               Navigator.pop(context);
+             },
+           ),
+
+           _DrawerItem(
+             icon: Icons.settings_rounded,
+             title: localizations.translate('settings'),
+             onTap: () {
+               Navigator.pop(context);
+               Navigator.push(
+                 context,
+                 MaterialPageRoute(
+                   builder: (context) => const SettingsScreen(),
+                 ),
+               );
+             },
+           ),
+
+           const Spacer(),
+
+           // 🔹 Divider + Version
+           const Divider(thickness: 0.6),
+
+           Padding(
+             padding: const EdgeInsets.all(16.0),
+             child: Text(
+               '${localizations.translate('version')} ${AppConfig.appVersion}',
+               style: Theme.of(context).textTheme.bodySmall,
+             ),
+           ),
+         ],
+       ),
       ),
-      body: BlocBuilder<ResumeBloc, ResumeState>(
+    body: BlocBuilder<ResumeBloc, ResumeState>(
         builder: (context, state) {
           if (state is ResumeLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is ResumeLoaded) {
             if (state.resumes.isEmpty) {
               return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.description_outlined,
-                      size: 80,
-                      color: Colors.grey,
-                    ),
-                    const SizedBox(height: 20),
-                    Text(
-                      localizations.translate('no_resumes'),
-                      style: Theme.of(context).textTheme.titleMedium,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
+                child: Image.asset("assets/emptyDraft.png")
               );
             }
             return ListView.builder(
@@ -192,7 +274,8 @@ class DashboardScreen extends StatelessWidget {
     BuildContext context,
     String id,
     AppLocalizations localizations,
-  ) {
+  )
+  {
     showDialog(
       context: context,
       builder:
@@ -219,3 +302,37 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 }
+
+
+class _DrawerItem extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final VoidCallback onTap;
+
+  const _DrawerItem({
+    required this.icon,
+    required this.title,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(
+        icon,
+        color: Theme.of(context).colorScheme.primary,
+      ),
+      title: Text(
+        title,
+        style: Theme.of(context).textTheme.bodyMedium,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      onTap: onTap,
+    );
+  }
+}
+
+
+

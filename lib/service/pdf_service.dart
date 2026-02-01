@@ -2,14 +2,18 @@ import 'dart:io';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:resumemaker/utilities/models.dart';
+import 'package:flutter_file_dialog/flutter_file_dialog.dart';
+
 
 class PdfService {
-  static Future<String> generatePdf(
+/*  static Future<String> generatePdf(
     Resume resume,
     int templateType, {
     PdfColor? selectedColor,
-  }) async {
+  })
+  async {
     final pdf = pw.Document();
 
     switch (templateType) {
@@ -31,7 +35,61 @@ class PdfService {
     await file.writeAsBytes(await pdf.save());
 
     return file.path;
+  }*/
+
+
+  static Future<String?> generatePdf(
+      Resume resume,
+      int templateType, {
+        PdfColor? selectedColor,
+      }) async {
+    final pdf = pw.Document();
+
+    switch (templateType) {
+      case 1:
+        _addBasicTemplate(pdf, resume);
+        break;
+      case 2:
+        _addClassicTemplate(pdf, resume, selectedColor ?? PdfColors.blue);
+        break;
+      case 3:
+        _addModernTemplate(pdf, resume, selectedColor ?? PdfColors.teal);
+        break;
+    }
+
+    final bytes = await pdf.save();
+
+    final params = SaveFileDialogParams(
+      data: bytes,
+      fileName: '${resume.fullName.replaceAll(" ", "_")}_resume.pdf',
+    );
+
+    return await FlutterFileDialog.saveFile(params: params);
   }
+
+
+
+  static Future<bool> requestStoragePermission() async {
+    if (await Permission.storage.isGranted) {
+      return true;
+    }
+
+    final status = await Permission.storage.request();
+    return status.isGranted;
+  }
+
+  static Future<Directory> getDownloadsDirectory() async {
+    if (Platform.isAndroid) {
+      return Directory('/storage/emulated/0/Download');
+    } else {
+      return await getApplicationDocumentsDirectory();
+    }
+  }
+
+
+
+
+
 
   // Template 1: Basic - Clean white layout with underlined sections
   static void _addBasicTemplate(pw.Document pdf, Resume resume) {
@@ -258,7 +316,8 @@ class PdfService {
     pw.Document pdf,
     Resume resume,
     PdfColor color,
-  ) {
+  )
+  {
     pdf.addPage(
       pw.MultiPage(
         pageFormat: PdfPageFormat.a4,
@@ -495,7 +554,8 @@ class PdfService {
     pw.Document pdf,
     Resume resume,
     PdfColor textColor,
-  ) {
+  )
+  {
     pdf.addPage(
       pw.MultiPage(
         pageFormat: PdfPageFormat.a4,
@@ -571,8 +631,11 @@ class PdfService {
                 pw.Row(
                   children: [
                     pw.Text(
-                      '■ ',
-                      style: pw.TextStyle(fontSize: 16, color: textColor),
+                      '• ',
+                      style: pw.TextStyle(
+                        fontSize: 16,
+                        color: textColor,
+                      ),
                     ),
                     pw.Text(
                       'EXPERIENCE',
@@ -633,9 +696,13 @@ class PdfService {
               pw.Row(
                 children: [
                   pw.Text(
-                    '■ ',
-                    style: pw.TextStyle(fontSize: 16, color: textColor),
+                    '• ',
+                    style: pw.TextStyle(
+                      fontSize: 16,
+                      color: textColor,
+                    ),
                   ),
+
                   pw.Text(
                     'EDUCATION',
                     style: pw.TextStyle(
@@ -687,9 +754,13 @@ class PdfService {
               pw.Row(
                 children: [
                   pw.Text(
-                    '■ ',
-                    style: pw.TextStyle(fontSize: 16, color: textColor),
+                    '• ',
+                    style: pw.TextStyle(
+                      fontSize: 16,
+                      color: textColor,
+                    ),
                   ),
+
                   pw.Text(
                     'SKILLS',
                     style: pw.TextStyle(
@@ -722,9 +793,13 @@ class PdfService {
                 pw.Row(
                   children: [
                     pw.Text(
-                      '■ ',
-                      style: pw.TextStyle(fontSize: 16, color: textColor),
+                      '• ',
+                      style: pw.TextStyle(
+                        fontSize: 16,
+                        color: textColor,
+                      ),
                     ),
+
                     pw.Text(
                       'CERTIFICATIONS',
                       style: pw.TextStyle(

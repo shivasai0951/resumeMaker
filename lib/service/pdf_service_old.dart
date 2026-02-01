@@ -1,3 +1,4 @@
+/*
 import 'dart:io';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -5,7 +6,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:resumemaker/utilities/models.dart';
 
 class PdfService {
-  static Future<String> generatePdf(Resume resume, int templateType) async {
+ */
+/* static Future<String> generatePdf(Resume resume, int templateType) async {
     final pdf = pw.Document();
 
     switch (templateType) {
@@ -24,6 +26,43 @@ class PdfService {
 
     final directory = await getApplicationDocumentsDirectory();
     final file = File('${directory.path}/${resume.fullName}_resume.pdf');
+    await file.writeAsBytes(await pdf.save());
+
+    return file.path;
+  }
+*//*
+
+
+
+  static Future<String> generatePdf(Resume resume, int templateType) async {
+    final pdf = pw.Document();
+
+    switch (templateType) {
+      case 1:
+        _addClassicTemplate(pdf, resume);
+        break;
+      case 2:
+        _addModernTemplate(pdf, resume);
+        break;
+      case 3:
+        _addMinimalTemplate(pdf, resume);
+        break;
+      default:
+        _addClassicTemplate(pdf, resume);
+    }
+
+    Directory? directory;
+
+    if (Platform.isAndroid) {
+      directory = Directory('/storage/emulated/0/Download');
+    } else {
+      directory = await getApplicationDocumentsDirectory();
+    }
+
+    final filePath =
+        '${directory.path}/${resume.fullName.replaceAll(" ", "_")}_resume.pdf';
+
+    final file = File(filePath);
     await file.writeAsBytes(await pdf.save());
 
     return file.path;
@@ -684,3 +723,4 @@ class PdfService {
     );
   }
 }
+*/
