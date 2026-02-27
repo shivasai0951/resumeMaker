@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppConfig {
   static const String appName = 'Resume Maker';
-  static const String appVersion = '1.0.0';
+  static const String appVersion = '1.0.1';
 
   static const Color primaryColor = Color(0xFF2F80ED);
   static const Color primaryVariant = Color(0xFF56CCF2);
