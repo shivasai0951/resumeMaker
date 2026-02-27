@@ -29,32 +29,49 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.description,
-              size: 100,
-              color: AppConfig.primaryColor,
-            ),
-            const SizedBox(height: 30),
-            Text(
-              AppConfig.appName,
-              style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: AppConfig.primaryColor,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 120,
+                height: 120,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(24),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(24),
+                  child: Image.asset(
+                    'assets/icon.png',
+                    width: 120,
+                    height: 120,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              'Version ${AppConfig.appVersion}',
-              style: Theme.of(
-                context,
-              ).textTheme.bodyMedium?.copyWith(color: Colors.grey),
-            ),
-            const SizedBox(height: 50),
-            const CircularProgressIndicator(),
-          ],
+              const SizedBox(height: 30),
+              Text(
+                AppConfig.appName,
+                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: AppConfig.primaryColor,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                'Version ${AppConfig.appVersion}',
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.copyWith(color: Colors.grey),
+              ),
+              const SizedBox(height: 50),
+              const SizedBox(
+                width: 200,
+                child: LinearProgressIndicator(minHeight: 4),
+              ),
+            ],
+          ),
         ),
       ),
     );

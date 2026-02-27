@@ -4,6 +4,7 @@ import 'package:resumemaker/bloc/settings_bloc.dart';
 import 'package:resumemaker/bloc/settings_event.dart';
 import 'package:resumemaker/bloc/settings_state.dart';
 import 'package:resumemaker/utilities/app_localizations.dart';
+import 'package:resumemaker/widgets/modern_app_bar.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -13,7 +14,7 @@ class SettingsScreen extends StatelessWidget {
     final localizations = AppLocalizations.of(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text(localizations.translate('settings'))),
+      appBar: ModernAppBar(title: localizations.translate('settings')),
       body: BlocBuilder<SettingsBloc, SettingsState>(
         builder: (context, state) {
           return ListView(

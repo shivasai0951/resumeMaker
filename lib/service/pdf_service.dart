@@ -6,9 +6,8 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:resumemaker/utilities/models.dart';
 import 'package:flutter_file_dialog/flutter_file_dialog.dart';
 
-
 class PdfService {
-/*  static Future<String> generatePdf(
+  /*  static Future<String> generatePdf(
     Resume resume,
     int templateType, {
     PdfColor? selectedColor,
@@ -37,23 +36,22 @@ class PdfService {
     return file.path;
   }*/
 
-
   static Future<String?> generatePdf(
-      Resume resume,
-      int templateType, {
-        PdfColor? selectedColor,
-      }) async {
+    Resume resume,
+    int templateType, {
+    PdfColor? selectedColor,
+  }) async {
     final pdf = pw.Document();
 
     switch (templateType) {
       case 1:
-        _addBasicTemplate(pdf, resume);
+        addBasicTemplate(pdf, resume);
         break;
       case 2:
-        _addClassicTemplate(pdf, resume, selectedColor ?? PdfColors.blue);
+        addClassicTemplate(pdf, resume, selectedColor ?? PdfColors.blue);
         break;
       case 3:
-        _addModernTemplate(pdf, resume, selectedColor ?? PdfColors.teal);
+        addModernTemplate(pdf, resume, selectedColor ?? PdfColors.teal);
         break;
     }
 
@@ -66,8 +64,6 @@ class PdfService {
 
     return await FlutterFileDialog.saveFile(params: params);
   }
-
-
 
   static Future<bool> requestStoragePermission() async {
     if (await Permission.storage.isGranted) {
@@ -86,13 +82,8 @@ class PdfService {
     }
   }
 
-
-
-
-
-
   // Template 1: Basic - Clean white layout with underlined sections
-  static void _addBasicTemplate(pw.Document pdf, Resume resume) {
+  static void addBasicTemplate(pw.Document pdf, Resume resume) {
     pdf.addPage(
       pw.MultiPage(
         pageFormat: PdfPageFormat.a4,
@@ -311,13 +302,12 @@ class PdfService {
     );
   }
 
-  // Template 2: Classic - Sections with colored backgrounds and black text
-  static void _addClassicTemplate(
+  // Template 2: Classic - Colored section backgrounds with black text
+  static void addClassicTemplate(
     pw.Document pdf,
     Resume resume,
     PdfColor color,
-  )
-  {
+  ) {
     pdf.addPage(
       pw.MultiPage(
         pageFormat: PdfPageFormat.a4,
@@ -550,12 +540,11 @@ class PdfService {
   }
 
   // Template 3: Modern - Icons, colored text, bullet points
-  static void _addModernTemplate(
+  static void addModernTemplate(
     pw.Document pdf,
     Resume resume,
     PdfColor textColor,
-  )
-  {
+  ) {
     pdf.addPage(
       pw.MultiPage(
         pageFormat: PdfPageFormat.a4,
@@ -632,10 +621,7 @@ class PdfService {
                   children: [
                     pw.Text(
                       '• ',
-                      style: pw.TextStyle(
-                        fontSize: 16,
-                        color: textColor,
-                      ),
+                      style: pw.TextStyle(fontSize: 16, color: textColor),
                     ),
                     pw.Text(
                       'EXPERIENCE',
@@ -697,10 +683,7 @@ class PdfService {
                 children: [
                   pw.Text(
                     '• ',
-                    style: pw.TextStyle(
-                      fontSize: 16,
-                      color: textColor,
-                    ),
+                    style: pw.TextStyle(fontSize: 16, color: textColor),
                   ),
 
                   pw.Text(
@@ -755,10 +738,7 @@ class PdfService {
                 children: [
                   pw.Text(
                     '• ',
-                    style: pw.TextStyle(
-                      fontSize: 16,
-                      color: textColor,
-                    ),
+                    style: pw.TextStyle(fontSize: 16, color: textColor),
                   ),
 
                   pw.Text(
@@ -794,10 +774,7 @@ class PdfService {
                   children: [
                     pw.Text(
                       '• ',
-                      style: pw.TextStyle(
-                        fontSize: 16,
-                        color: textColor,
-                      ),
+                      style: pw.TextStyle(fontSize: 16, color: textColor),
                     ),
 
                     pw.Text(

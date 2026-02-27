@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 class AppConfig {
   static const String appName = 'Resume Maker';
   static const String appVersion = '1.0.0';
+  static const String appLink =
+      'https://play.google.com/store/apps/details?id=com.kandoji.resumemaker&hl=en_IN';
+  static const String moreAppsLink =
+      'https://play.google.com/store/apps/developer?id=KANDOJI+SHIVASAI&hl=en_IN';
+  static const String privacyPolicyLink =
+      'https://www.freeprivacypolicy.com/live/81e6ff69-82a6-4129-ace3-91d0968b5730';
 
   static const Color primaryColor = Color(0xFF2F80ED);
   static const Color primaryVariant = Color(0xFF56CCF2);
@@ -14,7 +20,8 @@ class AppConfig {
 
   static const Color darkBackgroundColor = Color(0xFF121212);
   static const Color darkSurfaceColor = Color(0xFF1E1E1E);
-  static const Color darkPrimaryColor = Color(0xFFBB86FC);
+  //static const Color darkPrimaryColor = Color(0xFFBB86FC);
+  static const Color darkPrimaryColor = Color(0xFF2F80ED);
 
   static const Color textPrimaryLight = Color(0xFF000000);
   static const Color textSecondaryLight = Color(0xFF757575);
