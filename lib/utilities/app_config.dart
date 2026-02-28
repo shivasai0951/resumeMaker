@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppConfig {
   static const String appName = 'Resume Maker';
-  static const String appVersion = '1.0.0';
+  static const String appVersion = '1.0.3';
   static const String appLink =
       'https://play.google.com/store/apps/details?id=com.kandoji.resumemaker&hl=en_IN';
   static const String moreAppsLink =

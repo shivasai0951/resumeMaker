@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:in_app_update/in_app_update.dart';
+//import 'package:in_app_update/in_app_update.dart';
 import 'package:resumemaker/bloc/resume_bloc.dart';
 import 'package:resumemaker/bloc/resume_state.dart';
 import 'package:resumemaker/bloc/resume_event.dart';
@@ -21,10 +21,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   void initState() {
     super.initState();
-    _checkForUpdate();
+    //_checkForUpdate();
   }
 
-  Future<void> _checkForUpdate() async {
+/*
+Future<void> _checkForUpdate() async {
     try {
       final updateInfo = await InAppUpdate.checkForUpdate();
       if (updateInfo.updateAvailability == UpdateAvailability.updateAvailable) {
@@ -35,9 +36,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
     } catch (e) {
       // Silently fail - update check is not critical
     }
-  }
+  }*/
 
-  void _showUpdateDialog() {
+ /* void _showUpdateDialog() {
     showDialog(
       context: context,
       builder:
@@ -61,53 +62,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ],
           ),
     );
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context);
 
-    /*return Scaffold(
-      appBar: AppBar(title: Text(localizations.translate('dashboard'))),
-      drawer: Drawer(
-        child: Column(
-          children: [
-            DrawerHeader(
-              //decoration: const BoxDecoration(color: AppConfig.primaryColor),
-              child: 
-              Image.asset("assets/ic_launcher.png",fit: BoxFit.fitWidth ,),
-            ),
-            ListTile(
-              leading: const Icon(Icons.dashboard),
-              title: Text(localizations.translate('dashboard')),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: Text(localizations.translate('settings')),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SettingsScreen(),
-                  ),
-                );
-              },
-            ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                '${localizations.translate('version')} ${AppConfig.appVersion}',
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ),
-          ],
-        ),
-      ),*/
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
