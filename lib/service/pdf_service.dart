@@ -211,7 +211,7 @@ class PdfService {
               ),
               pw.SizedBox(height: 8),
               pw.Text(
-                resume.skills.map((s) => s.name).join(' • '),
+                resume.skills.map((s) => s.name).join(' * '),
                 style: const pw.TextStyle(fontSize: 11),
               ),
               pw.SizedBox(height: 16),
@@ -442,7 +442,7 @@ class PdfService {
               ),
               pw.SizedBox(height: 8),
               pw.Text(
-                resume.skills.map((s) => s.name).join(' • '),
+                resume.skills.map((s) => s.name).join(' * '),
                 style: const pw.TextStyle(fontSize: 11),
               ),
               pw.SizedBox(height: 16),
@@ -620,7 +620,7 @@ class PdfService {
                 pw.Row(
                   children: [
                     pw.Text(
-                      '• ',
+                      '* ',
                       style: pw.TextStyle(fontSize: 16, color: textColor),
                     ),
                     pw.Text(
@@ -643,7 +643,7 @@ class PdfService {
                         pw.Row(
                           children: [
                             pw.Text(
-                              '• ',
+                              '* ',
                               style: const pw.TextStyle(fontSize: 14),
                             ),
                             pw.Expanded(
@@ -682,7 +682,7 @@ class PdfService {
               pw.Row(
                 children: [
                   pw.Text(
-                    '• ',
+                    '* ',
                     style: pw.TextStyle(fontSize: 16, color: textColor),
                   ),
 
@@ -703,7 +703,7 @@ class PdfService {
                   child: pw.Row(
                     crossAxisAlignment: pw.CrossAxisAlignment.start,
                     children: [
-                      pw.Text('• ', style: const pw.TextStyle(fontSize: 14)),
+                      pw.Text('* ', style: const pw.TextStyle(fontSize: 14)),
                       pw.Expanded(
                         child: pw.Column(
                           crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -737,7 +737,7 @@ class PdfService {
               pw.Row(
                 children: [
                   pw.Text(
-                    '• ',
+                    '* ',
                     style: pw.TextStyle(fontSize: 16, color: textColor),
                   ),
 
@@ -757,7 +757,7 @@ class PdfService {
                   margin: const pw.EdgeInsets.only(bottom: 4, left: 20),
                   child: pw.Row(
                     children: [
-                      pw.Text('• ', style: const pw.TextStyle(fontSize: 14)),
+                      pw.Text('* ', style: const pw.TextStyle(fontSize: 14)),
                       pw.Text(
                         '${skill.name} (${skill.level})',
                         style: const pw.TextStyle(fontSize: 11),
@@ -773,7 +773,7 @@ class PdfService {
                 pw.Row(
                   children: [
                     pw.Text(
-                      '• ',
+                      '* ',
                       style: pw.TextStyle(fontSize: 16, color: textColor),
                     ),
 
@@ -794,7 +794,7 @@ class PdfService {
                     child: pw.Row(
                       crossAxisAlignment: pw.CrossAxisAlignment.start,
                       children: [
-                        pw.Text('• ', style: const pw.TextStyle(fontSize: 14)),
+                        pw.Text('* ', style: const pw.TextStyle(fontSize: 14)),
                         pw.Expanded(
                           child: pw.Column(
                             crossAxisAlignment: pw.CrossAxisAlignment.start,

@@ -24,50 +24,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
     //_checkForUpdate();
   }
 
-/*
-Future<void> _checkForUpdate() async {
-    try {
-      final updateInfo = await InAppUpdate.checkForUpdate();
-      if (updateInfo.updateAvailability == UpdateAvailability.updateAvailable) {
-        if (mounted) {
-          _showUpdateDialog();
-        }
-      }
-    } catch (e) {
-      // Silently fail - update check is not critical
-    }
-  }*/
-
- /* void _showUpdateDialog() {
-    showDialog(
-      context: context,
-      builder:
-          (context) => AlertDialog(
-            title: const Text('Update Available'),
-            content: const Text(
-              'A new version of Resume Maker is available on Play Store. Update now for the latest features and improvements!',
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('Later'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  InAppUpdate.performImmediateUpdate();
-                },
-                child: const Text('Update Now'),
-              ),
-            ],
-          ),
-    );
-  }*/
-
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context);
-
 
     return Scaffold(
       appBar: AppBar(
@@ -106,6 +65,8 @@ Future<void> _checkForUpdate() async {
                       child: Image.asset(
                         "assets/ic_launcher.png",
                         fit: BoxFit.contain,
+                        height: 30,
+                        width: 30,
                       ),
                     ),
                   ),
