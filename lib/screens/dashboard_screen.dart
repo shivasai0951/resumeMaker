@@ -10,6 +10,8 @@ import 'package:resumemaker/screens/resume_form_screen.dart';
 import 'package:resumemaker/screens/settings_screen.dart';
 import 'package:resumemaker/screens/about_screen.dart';
 
+import '../service/AdHelper.dart';
+
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
@@ -244,6 +246,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
+         // AdHelper.loadAd();
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const ResumeFormScreen()),

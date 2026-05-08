@@ -13,6 +13,8 @@ import 'package:resumemaker/utilities/models.dart';
 import 'package:resumemaker/service/pdf_service.dart';
 import 'package:resumemaker/widgets/modern_app_bar.dart';
 
+import '../service/BannerAdWidget.dart';
+
 class ResumeFormScreen extends StatefulWidget {
   final Resume? resume;
 
@@ -104,6 +106,7 @@ class _ResumeFormScreenState extends State<ResumeFormScreen> {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
+            const BannerAdWidget(), // top banner
             TextFormField(
               controller: _fullNameController,
               decoration: InputDecoration(
@@ -309,6 +312,7 @@ class _ResumeFormScreenState extends State<ResumeFormScreen> {
               ),
             ),
             const SizedBox(height: 32),
+            const BannerAdWidget(), // bottom banner
           ],
         ),
       ),

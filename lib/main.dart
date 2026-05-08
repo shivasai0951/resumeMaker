@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -12,10 +14,12 @@ import 'package:resumemaker/screens/splash_screen.dart';
 import 'package:resumemaker/utilities/app_config.dart';
 import 'package:resumemaker/utilities/app_localizations.dart';
 import 'package:resumemaker/utilities/models.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  unawaited(MobileAds.instance.initialize());
   await Hive.initFlutter();
 
   Hive.registerAdapter(EducationAdapter());
