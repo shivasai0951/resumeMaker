@@ -19,7 +19,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  unawaited(MobileAds.instance.initialize());
+  await MobileAds.instance.initialize();
   await Hive.initFlutter();
 
   Hive.registerAdapter(EducationAdapter());

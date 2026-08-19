@@ -18,7 +18,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace = "com.kandoji.resumemaker"
-    compileSdk = 35
+    compileSdk = 36
 
     // ✅ STABLE & SUPPORTED
     ndkVersion = "26.1.10909125"
@@ -26,7 +26,7 @@ android {
     defaultConfig {
         applicationId = "com.kandoji.resumemaker"
         minSdk = flutter.minSdkVersion
-        targetSdk = 35
+        targetSdk = 36
         versionCode = flutter.versionCode
         versionName = flutter.versionName
 

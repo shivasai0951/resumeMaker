@@ -5,7 +5,7 @@ class AdHelper {
 
   static void loadAd() {
     InterstitialAd.load(
-      adUnitId:'ca-app-pub-2574761528356984/8509190803', // ✅ test ID
+      adUnitId:'ca-app-pub-2574761528356984/8509190803',
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (ad) {
